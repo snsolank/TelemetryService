@@ -5,17 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class EP1TelematicsRequest {
-    private String code;
-    private String description;
-    private Geolocation geolocation;
-    private String healthStatus;
-    private String batteryStatus;
-    private String temperature;
-    private String eta;
-    private Boolean isDoorOpen;
+    List<EP1TelemetryData> ep1TelemetryData;
 }

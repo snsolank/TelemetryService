@@ -8,5 +8,7 @@ import java.util.List;
 @Component
 public interface EP1TelemetryService {
 
+    void publishTelemetryData(EP1TelematicsRequest ep1TelematicsRequest);
     List<EP1TelematicsRequest> consumeTelemetryData(EP1TelematicsRequest ep1TelematicsRequest);
+
 }

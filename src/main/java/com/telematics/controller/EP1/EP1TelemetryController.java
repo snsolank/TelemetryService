@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.telematics.util.ApplicationConstant.EP1_TELEMETRY_TOPIC;
+
 @RestController
 @RequestMapping("api/telematics/ep1/")
 @Slf4j
@@ -22,8 +24,6 @@ public class EP1TelemetryController {
     @Autowired
     private KafkaTemplate<String, EP1TelematicsRequest> kafkaTemplate;
 
-    @Value("${ep1KafkaTopic}")
-    private String ep1Topic;
 
     @Autowired
     private EP1TelemetryService ep1TelemetryService;
@@ -31,8 +31,9 @@ public class EP1TelemetryController {
     /*This endpoint is to mock the telemetry data published to Kafka topic*/
     @PostMapping("/v1/publish")
     public ResponseEntity<Response> publishTelemetryData(@RequestBody EP1TelematicsRequest ep1TelematicsRequest) {
-        kafkaTemplate.send(ep1Topic, ep1TelematicsRequest);
+        kafkaTemplate.send(EP1_TELEMETRY_TOPIC, ep1TelematicsRequest);
         return new ResponseEntity<>(Response.builder().data("EP1 Telemetry Data Published to Kafka Topic successfully")
                 .status(HttpStatus.OK).errorMessage("").build(), HttpStatus.OK);
     }
+
 }

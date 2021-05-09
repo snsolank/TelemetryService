@@ -1,6 +1,7 @@
 package com.telematics.controller.EP1;
 
 import com.telematics.controller.EP1.request.EP1TelematicsRequest;
+import com.telematics.controller.EP1.request.EP1TelemetryData;
 import com.telematics.dto.EP1.Response;
 import com.telematics.model.EP1Telemetry;
 import com.telematics.service.EP1TelemetryService;
@@ -31,7 +32,7 @@ public class EP1TelemetryController {
 
     @GetMapping("/v1/telemetry")
     public ResponseEntity<Response> retrieveTelemetry() {
-        List<EP1Telemetry> ep1TelemetryList =  ep1TelemetryService.retrieveTelemetryData();
+        List<EP1TelemetryData> ep1TelemetryList =  ep1TelemetryService.retrieveTelemetryData();
         return new ResponseEntity<>(Response.builder().data(ep1TelemetryList).status(HttpStatus.OK).errorMessage("").build(), HttpStatus.OK);
     }
 

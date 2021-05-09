@@ -2,16 +2,15 @@ package com.telematics.controller.EP1;
 
 import com.telematics.controller.EP1.request.EP1TelematicsRequest;
 import com.telematics.dto.EP1.Response;
+import com.telematics.model.EP1Telemetry;
 import com.telematics.service.EP1TelemetryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import static com.telematics.util.ApplicationConstant.EP1_TELEMETRY_TOPIC;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/ep1/")
@@ -32,7 +31,8 @@ public class EP1TelemetryController {
 
     @GetMapping("/v1/telemetry")
     public ResponseEntity<Response> retrieveTelemetry() {
-        ep1TelemetryService.consumeTelemetryData()
+        List<EP1Telemetry> ep1TelemetryList =  ep1TelemetryService.retrieveTelemetryData();
+        return new ResponseEntity<>(Response.builder().data(ep1TelemetryList).status(HttpStatus.OK).errorMessage("").build(), HttpStatus.OK);
     }
 
 }

@@ -46,9 +46,11 @@
    }
    ```
    ##### GET API
-   - http://localhost:8081/api/ep1/v1/telemetry
-   - This api is used retrieve EP1 telemetry data and can be consumed by our 3rd party
-     clients via API Gateway. 
+   - After successfully publishing telemetry message to kafka topic using above mentioned 
+     POST Api, these messages are saved in in-memory H2 db. 
+   - Following GET api is used to retrieve EP1 telemetry data from H2 db and can be consumed by our 3rd party
+        clients via API Gateway. 
+   - http://localhost:8081/api/ep1/v1/telemetry 
      
    ##### GET API Response
    ```json

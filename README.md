@@ -1,4 +1,5 @@
 # EP1 Telemetry Micro-Service communication with Kafka 
+ - This service is created with Java 11 and Spring Boot Framework
  - Telemetry micro-service consumes the telemetry data that is published on to kafka topic by MQTT Broker.
  ## Steps to Start Telemetry Service Locally
  - Install Apache Kafka 

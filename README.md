@@ -1,4 +1,4 @@
-# EP1 Telemetry Service communication with Kafka 
+# EP1 Telemetry Micro-Service communication with Kafka 
  - Telemetry Service consumes the messages which are published on kafka topic by MQTT Broker
  ## Steps to Start Telemetry Service Locally
  - Install Apache Kafka 
